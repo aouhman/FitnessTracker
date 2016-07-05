@@ -35,7 +35,7 @@ public class Goal {
 		this.minutes = minutes;
 	}
 
-	@OneToMany(mappedBy = "goal",cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "goal",cascade = CascadeType.ALL,fetch =FetchType.EAGER)
 	private List<Exercise> exercises = new ArrayList<Exercise>();
 
 	public List<Exercise> getExercises() {
