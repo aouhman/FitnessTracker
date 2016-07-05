@@ -3,6 +3,8 @@ package com.pluralsight.model;
 import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -25,8 +27,6 @@ public class Goal {
 	@Column(name = "MINUTES")
 	private int minutes;
 
-
-
 	public int getMinutes() {
 		return minutes;
 	}
@@ -35,4 +35,14 @@ public class Goal {
 		this.minutes = minutes;
 	}
 
+	@OneToMany(mappedBy = "goal",cascade = CascadeType.ALL)
+	private List<Exercise> exercises = new ArrayList<Exercise>();
+
+	public List<Exercise> getExercises() {
+		return exercises;
+	}
+
+	public void setExercises(List<Exercise> exercises) {
+		this.exercises = exercises;
+	}
 }
